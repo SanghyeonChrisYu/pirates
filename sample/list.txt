@@ -1,0 +1,3 @@
+videoName,topText,bottomText,
+IVE 아이브 Kitsch MV.mp4,topText\rForFirstVideo,bottomTextForFirstVideo,
+충주시 누칼협.mp4,topTextFor\rSecondVideo,bottomTextFor\rSecondVideoaaaaaaaaa,
