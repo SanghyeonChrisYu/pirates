@@ -7,6 +7,8 @@ from functools import wraps
 import numpy as np
 import pandas as pd
 import isodate
+import os
+from dotenv import load_dotenv
 
 
 def timing_decorator(func):
@@ -47,8 +49,12 @@ def find_outliers(data):
     return outliers
 
 
+load_dotenv()
+
+ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
+
 youtube = build("youtube", "v3",
-                developerKey="AIzaSyBCzEOYOXoiS3I5-YIci25RtIp0zOWYX_8")
+                developerKey=ALLOWED_HOSTS[0])
 
 
 @timing_decorator
