@@ -1,8 +1,16 @@
 from pytube import YouTube
 from moviepy.editor import *
 import pprint
+import numpy as np
 import pandas as pd
+import isodate
+import os
+from dotenv import load_dotenv
 import concurrent.futures
+from googleapiclient.discovery import build
+import re
+from collections import defaultdict
+
 
 from utils import *
 
@@ -15,7 +23,13 @@ print(type(df_link))
 class YT_Controller():
     def __init__(self) -> None:
         self.download_result_path = "./output/result/"
-        pass
+
+        load_dotenv()
+
+        self.ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
+        # print(ALLOWED_HOSTS)
+        self.data_api = build("youtube", "v3",
+                developerKey=self.ALLOWED_HOSTS[0])
 
     # @timing_decorator
     def download(self, url: str, video_output_path: str = "./output/media/video", audio_output_path: str = "./output/media/audio") -> tuple[str, str]:
@@ -74,6 +88,15 @@ class YT_Controller():
     def download_combine_multiple(self, url_list: list[str]) -> None:
         with concurrent.futures.ProcessPoolExecutor() as executor:
             executor.map(self.download_combine, url_list)
+
+    @timing_decorator
+    def fetch_youtube_comments(self, videoId):
+        # Retrieve video length, channel name, video title, and video created date
+        video_response = self.data_api.videos().list(
+            part="contentDetails,snippet,statistics",
+            id=videoId
+        ).execute()
+        
 
 
     
