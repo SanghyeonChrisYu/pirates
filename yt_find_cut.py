@@ -52,6 +52,7 @@ def find_outliers(data):
 load_dotenv()
 
 ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
+print(ALLOWED_HOSTS)
 
 youtube = build("youtube", "v3",
                 developerKey=ALLOWED_HOSTS[0])
@@ -207,16 +208,16 @@ def fetch_youtube_comments(youtube, videoId):
 video_id_list = ["pG6iaOMV46I", "YudHcBIxlYw", "nOI67IDlNMQ"]
 # video_id_list = ["nOI67IDlNMQ"]
 # # video_id_list = ["maevSSGrJtk", "PnFi3o1ZluQ", "j5gO2kf6sh8"]
-video_id_list = ["LSIOcCcEVaE", "ZLLcxNiQ9Yg", "6dW4d0IcQ3k"]
-# # video_id_list = ["u6wOyMUs74I"]
-video_id_list = ["23g5HBOg3Ic", "2TVXi_9Bvlg", "PAKFzFqJa58"]
-# video_id_list = ["6dW4d0IcQ3k"]
-# video_id_list = ["LSIOcCcEVaE", "ZLLcxNiQ9Yg", "6dW4d0IcQ3k", "2TVXi_9Bvlg"]
-video_id_list = ["TGgcC5xg9YI", "HmAsUQEFYGI", "mNEUkkoUoIA"]
-video_id_list = ["pG6iaOMV46I", "YudHcBIxlYw", "nOI67IDlNMQ", "LSIOcCcEVaE", "ZLLcxNiQ9Yg",
-                 "6dW4d0IcQ3k", "23g5HBOg3Ic", "2TVXi_9Bvlg", "PAKFzFqJa58", "TGgcC5xg9YI", "HmAsUQEFYGI", "mNEUkkoUoIA"]
-video_id_list = ["ZLLcxNiQ9Yg",
-                 "6dW4d0IcQ3k", "23g5HBOg3Ic", "2TVXi_9Bvlg", "PAKFzFqJa58", "TGgcC5xg9YI", "HmAsUQEFYGI", "mNEUkkoUoIA"]
+# video_id_list = ["LSIOcCcEVaE", "ZLLcxNiQ9Yg", "6dW4d0IcQ3k"]
+# # # video_id_list = ["u6wOyMUs74I"]
+# video_id_list = ["23g5HBOg3Ic", "2TVXi_9Bvlg", "PAKFzFqJa58"]
+# # video_id_list = ["6dW4d0IcQ3k"]
+# # video_id_list = ["LSIOcCcEVaE", "ZLLcxNiQ9Yg", "6dW4d0IcQ3k", "2TVXi_9Bvlg"]
+# video_id_list = ["TGgcC5xg9YI", "HmAsUQEFYGI", "mNEUkkoUoIA"]
+# video_id_list = ["pG6iaOMV46I", "YudHcBIxlYw", "nOI67IDlNMQ", "LSIOcCcEVaE", "ZLLcxNiQ9Yg",
+#                  "6dW4d0IcQ3k", "23g5HBOg3Ic", "2TVXi_9Bvlg", "PAKFzFqJa58", "TGgcC5xg9YI", "HmAsUQEFYGI", "mNEUkkoUoIA"]
+# video_id_list = ["ZLLcxNiQ9Yg",
+#                  "6dW4d0IcQ3k", "23g5HBOg3Ic", "2TVXi_9Bvlg", "PAKFzFqJa58", "TGgcC5xg9YI", "HmAsUQEFYGI", "mNEUkkoUoIA"]
 for video_id in video_id_list:
     result = fetch_youtube_comments(youtube, video_id)
     print(f"----------- ----------- -------------------")
